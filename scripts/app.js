@@ -6,8 +6,16 @@ class Deck{
     makeDeck(){
         let arr = [];
 
-        for(let i = 0; i < 52; i++){
-            
+        let suits = ['C', 'D', 'H', 'S'];
+        for(let i = 1; i <= 13; i++){
+            for(let j = 0; j < 4; j++){
+                arr.push('../Images/' + i + suits[j] + '.jpg');
+            }
         }
+        return arr;
     }
 }
+
+$(() => {
+    let deck = new Deck();
+});
