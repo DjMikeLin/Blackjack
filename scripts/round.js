@@ -12,4 +12,10 @@ class Round{
             return true;
         return false;
     }
+    //Returns true if player's score is higher then dealers; false otherwise
+    checkScores(){
+        if(this.playerScore > this.dealerScore)
+            return true;
+        return false;
+    }
 }
