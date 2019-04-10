@@ -9,7 +9,7 @@ class Deck{
         let arr = [];
 
         let suits = ['C', 'D', 'H', 'S'];
-        for(let i = 1; i <= 13; i++){
+        for(let i = 1; i <= this.numCards / 4; i++){
             for(let j = 0; j < 4; j++){
                 arr.push({
                     path: '../Images/' + i + suits[j] + '.jpg',
