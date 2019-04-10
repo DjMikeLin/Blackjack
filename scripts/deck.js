@@ -33,4 +33,13 @@ class Deck{
         }
         return this.cards;
     }
+    //Pops and returns num cards in a array from the begining of cards array
+    deal(num){
+        let arr = [];
+        for(let i = 0; i < num; i++){
+            arr.push(this.cards.pop());
+            this.numCards--;
+        }
+        return arr;
+    }
 }
