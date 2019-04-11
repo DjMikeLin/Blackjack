@@ -4,6 +4,7 @@ class Player{
         this.cards = [];//current cards the player is holding
         this.stack = stack;//current amount of money the player holds
         this.stand = false;
+        this.blackJack = false;
     }
     //Appends each element from cards to the current player's cards and updates the score accordingly
     assignCards(cards){
@@ -11,6 +12,7 @@ class Player{
             this.score += element.points;
             this.cards.push(element);
         });
+        this.checkBlackJack();
     }
     //Resets the current player's score and cards array; Returns the current player after reset
     reset(){
@@ -35,5 +37,10 @@ class Player{
                 card.points = 1;
             }
         });
+    }
+    //Sets the property blackJack to true if current player hit a Blackjack
+    checkBlackJack(){
+        if(this.score === 21)
+            this.blackJack = true;
     }
 }
