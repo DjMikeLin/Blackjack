@@ -3,13 +3,32 @@ $(() => {
     let dealer = new Player(0);
     let game = new Game(player, dealer);
 
+    $('#deal').hide();
+    $('#hit').hide();
+    $('#stand').hide();
+
+    $('#bet').click(() => {
+        $('#bet').hide();
+        $('#deal').show();
+    });
+
     $('#deal').click(() => {
         player.assignCards(game.currRound.deck.deal(2));
         dealer.assignCards(game.currRound.deck.deal(2));
         showCards(player, $('.playerCards'));
         showCards(dealer, $('.dealerCards'));
         $('#deal').hide();
-        $('#bet').hide();
+        $('#hit').show();
+        $('#stand').show();
+    });
+
+    $('#hit').click(() => {
+        player.assignCards(game.currRound.deck.deal(1));
+        
+        if(game.currRound.bust(player)){
+            console.log("busted");
+
+        }
     });
 
     console.log(player, dealer);

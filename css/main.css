@@ -1,5 +1,7 @@
 body{
     display: flex;
+    height:100vh;
+    width:100vw;
 }
 
 main{
@@ -26,9 +28,15 @@ p{
 }
 
 aside{
+    display: flex;
+    flex-direction: column;
     min-width: 25%;
     min-height: 100%;
     background-color: #c5dbc0;
+}
+
+button{
+    margin: 0 15px;
 }
 
 .dealerCards .playerCards{
