@@ -2,8 +2,6 @@ class Round{
     constructor(dealer, player){
         this.player = player;
         this.dealer = dealer;
-        this.playerScore = player.score;
-        this.dealerScore = dealer.score;
         this.deck = new Deck();
     }
     //Returns true if score is greater then 21; false otherwise
@@ -16,7 +14,7 @@ class Round{
     }
     //Returns true if player's score is higher then dealers; false otherwise
     checkScores(){
-        if(this.playerScore > this.dealerScore)
+        if(this.player.score > this.dealer.score)
             return true;
         return false;
     }

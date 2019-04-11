@@ -8,21 +8,27 @@ main{
     flex-direction: column;
     align-items: center;
     align-content: space-between;
-    width: 75%;
-    height: 90%;
+    min-width: 75%;
+    height: 100%;
     background: url('../Images/background.jpg');
     background-size: cover;
 }
 
-aside{
-    width: 25%;
-    height: 90%;
-    background-color: #c5dbc0;
+p{
+    margin-right: 5%;
+    width: 100px;
+    text-align: center;
+    background-color: rgb(118, 125, 135, .5);
+    color: #69429b;
+    animation-duration: 10s;
+    animation-name: slidein;
+    font-weight: bolder;
 }
 
-footer{
-    width: 100%;
-    height: 10%;
+aside{
+    min-width: 25%;
+    min-height: 100%;
+    background-color: #c5dbc0;
 }
 
 .dealerCards .playerCards{
@@ -37,3 +43,15 @@ footer{
     position: relative;
     border: 5px solid black;
 }
+
+@keyframes slidein{
+    from {
+      margin-left: 100%;
+      width: 300%; 
+    }
+  
+    to {
+      margin-left: 0%;
+      width: 100%;
+    }
+  }
