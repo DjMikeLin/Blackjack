@@ -20,7 +20,7 @@ class Deck{
                     points = 11;
 
                 arr.push({
-                    path: '../Images/' + i + suits[j] + '.jpg',
+                    path: 'Images/' + i + suits[j] + '.jpg',
                     points: points,
                     cardType: i
                 });

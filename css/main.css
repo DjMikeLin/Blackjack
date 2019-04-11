@@ -3,10 +3,12 @@ body{
 }
 
 main{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+    width: 75%;
     height: 90%;
+    background: url('../Images/background.jpg');
+    padding-bottom: 50%;
+    background-size: cover;
+    background-position: center center;
 }
 
 footer{
@@ -14,14 +16,15 @@ footer{
     height: 10%;
 }
 
-canvas{
-    width: 75%;
-    height: 100%;
-    background-image: url('../Images/background.jpg');
-    background-size: cover;
-    background-position: center center;
+.playerCards{
+    position: relative;
 }
 
-section{
-    width: 25%;
+.cards{
+    position: absolute;
+    margin: 0 50%;
+    box-shadow: 0 0 1px #000;
+    border-radius: 10%;
+    width: 100px;
+    height: 200px;
 }
