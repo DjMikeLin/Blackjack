@@ -26,4 +26,14 @@ class Player{
     won(amount){
         this.stack += amount;
     }
+    //Finds if there is an Ace with 11 points, if there is decrease score by 10
+    //and resets that card to 1 point
+    findAce(){
+        this.cards.forEach(card => {
+            if(card.cardType === 1 && card.points === 11){
+                this.score -= 10;
+                card.points = 1;
+            }
+        });
+    }
 }

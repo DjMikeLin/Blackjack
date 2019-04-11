@@ -11,9 +11,17 @@ class Deck{
         let suits = ['C', 'D', 'H', 'S'];
         for(let i = 1; i <= this.numCards / 4; i++){
             for(let j = 0; j < 4; j++){
+                let points = 0;
+                if(i >= 10)
+                    points = 10;
+                else if(i < 10 && i > 1)
+                    points = i;
+                else//if it is an ACE
+                    points = 11;
+
                 arr.push({
                     path: '../Images/' + i + suits[j] + '.jpg',
-                    points: i >= 10 ? 10 : i,
+                    points: points,
                     cardType: i
                 });
             }

@@ -7,8 +7,10 @@ class Round{
         this.deck = new Deck();
     }
     //Returns true if score is greater then 21; false otherwise
-    bust(score){
-        if(score > 21)
+    bust(player){
+        player.findAce();
+
+        if(player.score > 21)
             return true;
         return false;
     }
