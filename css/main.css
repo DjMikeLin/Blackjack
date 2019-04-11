@@ -1,13 +1,23 @@
+body{
+    display: flex;
+}
+
 main{
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    flex-direction: column;
+    align-items: center;
+    align-content: space-between;
     width: 75%;
     height: 90%;
     background: url('../Images/background.jpg');
-    padding-bottom: 50%;
     background-size: cover;
-    position: relative;
+}
+
+aside{
+    width: 25%;
+    height: 90%;
+    background-color: #c5dbc0;
 }
 
 footer{
@@ -25,10 +35,5 @@ footer{
     width: 100px;
     height: 200px;
     position: relative;
-}
-
-.wrapper{
-    display: flex;
-    justify-content: center;
-    align-self: center;
+    border: 5px solid black;
 }

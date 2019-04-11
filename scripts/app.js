@@ -6,6 +6,7 @@ $(() => {
     showCards(player, $('.playerCards'));
     console.log(player);
     dealer.assignCards(game.currRound.deck.deal(2));
+    showCards(dealer, $('.dealerCards'));
     console.log(dealer);
 
     while(!game.dealer.stand){
