@@ -1,14 +1,13 @@
-body{
-
-}
-
 main{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
     width: 75%;
     height: 90%;
     background: url('../Images/background.jpg');
     padding-bottom: 50%;
     background-size: cover;
-    background-position: center center;
+    position: relative;
 }
 
 footer{
@@ -16,15 +15,20 @@ footer{
     height: 10%;
 }
 
-.playerCards{
-    position: relative;
+.dealerCards .playerCards{
+
 }
 
 .cards{
-    position: absolute;
-    margin: 0 50%;
-    box-shadow: 0 0 1px #000;
+    margin: 20px 0;
     border-radius: 10%;
     width: 100px;
     height: 200px;
+    position: relative;
+}
+
+.wrapper{
+    display: flex;
+    justify-content: center;
+    align-self: center;
 }
