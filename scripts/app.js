@@ -1,5 +1,7 @@
 $(() => {
-    let game = new Game();
+    let player = new Player(5000);
+    let dealer = new Player(0);
+    let game = new Game(player, dealer);
     game.player.assignCards(game.currRound.deck.deal(2));
     game.dealer.assignCards(game.currRound.deck.deal(2));
     

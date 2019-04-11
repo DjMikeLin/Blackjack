@@ -1,7 +1,7 @@
 class Game{
-    constructor(){
-        this.dealer = new Player(0);
-        this.player = new Player(5000);
+    constructor(player, dealer){
+        this.dealer = dealer;
+        this.player = player;
         this.currRound = new Round(this.dealer, this.player);
     }
     //Returns true if the player's stack goes to 0; false otherwise
