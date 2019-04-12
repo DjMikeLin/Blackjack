@@ -36,19 +36,24 @@ $(() => {
     $('#deal').click(() => {
         player.assignCards(game.currRound.deck.deal(2));
         dealer.assignCards(game.currRound.deck.deal(2));
+        dealer.dealerScore = dealer.score - dealer.cards[0].points;
+
         showCards(player, $('.playerCards'));
         showPreFlipCards(dealer, $('.dealerCards'));
 
-        setScore(player);
         $('.playerInfo').show();
         $('#deal').hide();
         $('#hit').show();
         $('#stand').show();
+
+        setScore(player);
+        setDealerScore(dealer);
     });
 
     $('#hit').click(() => {
         player.assignCards(game.currRound.deck.deal(1));
-        
+        appendCard(player, $('.playerCards'));
+
         if(game.currRound.bust(player)){
             console.log("busted");
 
@@ -79,6 +84,14 @@ function showCards(player, selector){
         selector.append(item);
         right += 50;
     }
+}
+
+function appendCard(player, selector){
+    selector.append($('<img></img>')
+        .addClass('cards')
+        .attr("src", player.cards[player.cards.length - 1].path)
+        .css('right', (parseInt(selector.last().css('right')) + 50) + "px")
+    );
 }
 //Show dealer cards pre flip
 function showPreFlipCards(dealer, selector){
@@ -116,5 +129,9 @@ function setBet(player, currBet){
 }
 //Refreshes page with player's current score
 function setScore(player){
-    $('score').text(player.score);
+    $('.playerScore').text(player.score);
+}
+//Refreshes page with dealer's score before dealer's turn
+function setDealerScore(dealer){
+    $('.dealerScore').text(dealer.dealerScore);
 }

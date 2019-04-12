@@ -6,6 +6,7 @@ class Player{
         this.stand = false;
         this.blackJack = false;
         this.bet = 0;//current player bet
+        this.dealerScore = 0;//Only for dealer, score before dealer's turn
     }
     //Appends each element from cards to the current player's cards and updates the score accordingly
     assignCards(cards){
@@ -36,6 +37,7 @@ class Player{
             if(card.cardType === 1 && card.points === 11){
                 this.score -= 10;
                 card.points = 1;
+                return;
             }
         });
     }
