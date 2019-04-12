@@ -12,6 +12,7 @@ $(() => {
     $('#deal').hide();
     $('#hit').hide();
     $('#stand').hide();
+    $('.playerInfo').hide();
 
     $('#bet').click(() => {
         $('#errorMessage').text("");
@@ -36,7 +37,10 @@ $(() => {
         player.assignCards(game.currRound.deck.deal(2));
         dealer.assignCards(game.currRound.deck.deal(2));
         showCards(player, $('.playerCards'));
-        showCards(dealer, $('.dealerCards'));
+        showPreFlipCards(dealer, $('.dealerCards'));
+
+        setScore(player);
+        $('.playerInfo').show();
         $('#deal').hide();
         $('#hit').show();
         $('#stand').show();
@@ -51,7 +55,9 @@ $(() => {
         }
     });
 
-    console.log(player, dealer);
+    $('#stand').click(() => {
+
+    });
 
 /*     while(!game.dealer.stand){
         if(game.dealer.score <= 16){
@@ -74,6 +80,18 @@ function showCards(player, selector){
         right += 50;
     }
 }
+//Show dealer cards pre flip
+function showPreFlipCards(dealer, selector){
+    selector.append($('<img></img>')
+        .addClass('cards')
+        .attr("src", "Images/Yellow_back.jpg")
+        .css('right', '0px'));
+    
+    selector.append($('<img></img>')
+        .addClass('cards')
+        .attr("src", dealer.cards[1].path)
+        .css('right', '50px'));
+}
 //Assign onClicks to every chip
 function assignOnClickToChips(chips, player){
     chips.forEach(chip => {
@@ -95,4 +113,8 @@ function setStack(player, currStack){
 function setBet(player, currBet){
     player.bet = currBet;
     $('.betSize').text(player.bet);
+}
+//Refreshes page with player's current score
+function setScore(player){
+    $('score').text(player.score);
 }
