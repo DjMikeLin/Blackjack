@@ -52,26 +52,33 @@ $(() => {
 
     $('#hit').click(() => {
         player.assignCards(game.currRound.deck.deal(1));
+
+        if(game.currRound.bust(player))
+            player.findAce();
+
         appendCard(player, $('.playerCards'), $('.playerCards > .cards'));
-
+        setScore(player);
+        
         if(game.currRound.bust(player)){
-            console.log("busted");
-
+            $('#errorMessage').text("Busted!");
+            $('#stand').click();
         }
     });
 
     $('#stand').click(() => {
+        $('#hit').hide();
+        $('#stand').hide();
 
-    });
-
-/*     while(!game.dealer.stand){
-        if(game.dealer.score <= 16){
-            game.dealer.assignCards(game.currRound.deck.deal(1));
-            game.currRound.bust(game.dealer);
+        while(!game.dealer.stand){
+            if(game.dealer.score <= 16){
+                game.dealer.assignCards(game.currRound.deck.deal(1));
+                game.currRound.bust(game.dealer);
+            }
+            else
+                game.dealer.stand = true;
         }
-        else
-            game.dealer.stand = true;
-    } */
+        console.log(dealer);
+    });
 });
 //Sends the card images that the player has to dom
 function showCards(player, selector){

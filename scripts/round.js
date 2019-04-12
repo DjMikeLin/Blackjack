@@ -6,8 +6,6 @@ class Round{
     }
     //Returns true if score is greater then 21; false otherwise
     bust(player){
-        player.findAce();
-
         if(player.score > 21)
             return true;
         return false;
