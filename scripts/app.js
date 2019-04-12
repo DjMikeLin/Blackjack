@@ -46,7 +46,7 @@ $(() => {
         $('#hit').show();
         $('#stand').show();
 
-        setScore(player);
+        setScore(player, $('.playerScore'));
         setDealerScore(dealer);
     });
 
@@ -57,11 +57,13 @@ $(() => {
             player.findAce();
 
         appendCard(player, $('.playerCards'), $('.playerCards > .cards'));
-        setScore(player);
+        setScore(player, $('.playerScore'));
         
         if(game.currRound.bust(player)){
             $('#errorMessage').text("Busted!");
-            $('#stand').click();
+            $('#hit').hide();
+            $('#stand').hide();
+            flipCard(dealer);
         }
     });
 
@@ -69,17 +71,26 @@ $(() => {
         $('#hit').hide();
         $('#stand').hide();
 
-        while(!game.dealer.stand){
-            if(game.dealer.score <= 16){
-                game.dealer.assignCards(game.currRound.deck.deal(1));
-                game.currRound.bust(game.dealer);
-            }
-            else
-                game.dealer.stand = true;
-        }
-        console.log(dealer);
+        flipCard(dealer);
+        dealerTurn(game);
     });
 });
+
+function dealerTurn(game){
+    while(!game.dealer.stand){
+        if(game.dealer.score <= 16){
+            game.dealer.assignCards(game.currRound.deck.deal(1));
+            game.currRound.bust(game.dealer);
+        }
+        else
+            game.dealer.stand = true;
+    }
+}
+//Flip the dealer card and updates the dealer score in dom
+function flipCard(dealer){
+    $('.dealerCards > .cards').first().attr('src', dealer.cards[0].path);
+    setScore(dealer, $('.dealerScore'));
+}
 //Sends the card images that the player has to dom
 function showCards(player, selector){
     let right = 0;
@@ -135,8 +146,8 @@ function setBet(player, currBet){
     $('.betSize').text(player.bet);
 }
 //Refreshes page with player's current score
-function setScore(player){
-    $('.playerScore').text(player.score);
+function setScore(player, selector){
+    selector.text(player.score);
 }
 //Refreshes page with dealer's score before dealer's turn
 function setDealerScore(dealer){
