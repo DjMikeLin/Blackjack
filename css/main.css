@@ -18,12 +18,17 @@ main{
 
 p{
     margin-right: 5%;
-    width: 100px;
+    width: 40%;
+    height: 5%;
+    border-radius: 100%;
     text-align: center;
     background-color: rgb(118, 125, 135, .5);
     color: #69429b;
     animation-duration: 10s;
-    animation-name: slidein;
+    animation-name: colorAnimation;
+    animation-iteration-count: infinite;
+    text-align: center;
+    font-size: 2em;
     font-weight: bolder;
 }
 
@@ -52,14 +57,16 @@ button{
     border: 5px solid black;
 }
 
-@keyframes slidein{
-    from {
-      margin-left: 100%;
-      width: 300%; 
-    }
-  
-    to {
-      margin-left: 0%;
-      width: 100%;
-    }
-  }
+@keyframes colorAnimation{
+    0%       {background-color: red; color: whitesmoke;}
+    10%      {background-color: orange; color: violet;}
+    20%      {background-color: yellow; color: magenta;}
+    30%      {background-color: green; color: maroon;}
+    40%      {background-color: blue; color: mintcream;}
+    50%      {background-color: purple; color: chartreuse;}
+    60%      {background-color: brown; color: cornflowerblue;}
+    70%      {background-color: white; color: turquoise;}
+    80%      {background-color: black; color: indigo;}
+    90%      {background-color: pink; color: orchid;}
+    100%     {background-color: gray; color: hotpink;}
+}
