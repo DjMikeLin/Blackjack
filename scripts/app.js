@@ -3,11 +3,18 @@ $(() => {
     let dealer = new Player(0);
     let game = new Game(player, dealer);
 
+    let clickableChips = new Chips();
+    assignOnClickToChips(clickableChips.types, player);
+
     $('#deal').hide();
     $('#hit').hide();
     $('#stand').hide();
 
     $('#bet').click(() => {
+        if(player.bet > player.stack){
+            $('#errorMessage').text("You can't bet more then your current stack!");
+        }
+
         $('#bet').hide();
         $('#deal').show();
     });
@@ -53,4 +60,20 @@ function showCards(player, selector){
         selector.append(item);
         right += 50;
     }
+}
+//Assign onClicks to every chip
+function assignOnClickToChips(chips, player){
+    chips.forEach(chip => {
+        let item = $('<img></img>').attr('src', chip.path);
+        //On player click() increase the player's current bet
+        item.click(() => {
+            player.bet += chip.value;
+            console.log(player);
+        });
+        $('.chips').append(item);
+    });
+}
+//Refreshes page with player's current stack
+function setStack(player){
+
 }

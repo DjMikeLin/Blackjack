@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="scripts/jquery-3.3.1.js"></script>
+    <script defer src="scripts/chips.js"></script>
     <script defer src="scripts/game.js"></script>
     <script defer src="scripts/round.js"></script>
     <script defer src="scripts/player.js"></script>
@@ -18,18 +19,16 @@
         <div class="dealerCards"></div>
         <p>Dealer</p>
         <p>Player</p>
-        <div class="playerCards"></div>
-        <div class="chips">
-            <img src="Images/10Chip.jpg" alt="No image found!">
-            <img src="Images/50Chip.jpg" alt="No image found!">
-            <img src="Images/100Chip.jpg" alt="No image found!">
-            <img src="Images/500Chip.jpg" alt="No image found!">
-            <img src="Images/1000Chip.jpg" alt="No image found!">
+        <div class="stack">
+            <p>Stack: <span class="stackSize"></span></p>
         </div>
+        <div class="playerCards"></div>
+        <div class="chips"></div>
     </main>
     <aside>
         <button id='deal'>Deal</button>
         <button id='bet'>Bet</button>
+        <p id="errorMessage"></p>
         <button id='hit'>Hit</button>
         <button id='stand'>Stand</button>
     </aside>

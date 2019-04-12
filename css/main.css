@@ -69,6 +69,18 @@ button{
     margin-right: 5%;
 }
 
+.stack{
+    display: flex;
+}
+
+.stackSize{
+    
+}
+
+#errorMessage{
+    
+}
+
 @keyframes colorAnimation{
     0%       {background-color: red; color: whitesmoke;}
     10%      {background-color: orange; color: violet;}
