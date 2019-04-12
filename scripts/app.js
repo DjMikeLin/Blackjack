@@ -75,16 +75,40 @@ $(() => {
         dealerTurn(game);
     });
 });
-
+//Dealer takes turn
 function dealerTurn(game){
     while(!game.dealer.stand){
         if(game.dealer.score <= 16){
             game.dealer.assignCards(game.currRound.deck.deal(1));
-            game.currRound.bust(game.dealer);
+
+            if(game.currRound.bust(game.dealer))
+                game.dealer.findAce();
+            
+            appendCard(game.dealer, $('.dealerCards'), $('.dealerCards > .cards'));
+            setScore(game.dealer, $('.dealerScore'));
+
+            if(game.currRound.bust(game.dealer)){
+                playerWon(game.player);
+                return;
+            }
         }
         else
             game.dealer.stand = true;
     }
+
+    if(game.currRound.checkScores() === true)
+        playerWon(game.player);
+    else if(game.currRound.checkScores() === false)
+        $('#errorMessage').text("You've Lost!");
+    else{
+        $('#errorMessage').text("You've Drawed!");
+        setStack(game.player, game.player.stack + game.player.bet);
+    }
+}
+//Updates stuff after player has won
+function playerWon(player){
+    $('#errorMessage').text("You've Won!");
+    setStack(player, player.stack + (player.bet * 2));
 }
 //Flip the dealer card and updates the dealer score in dom
 function flipCard(dealer){
