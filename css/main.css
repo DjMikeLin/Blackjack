@@ -57,6 +57,18 @@ button{
     border: 5px solid black;
 }
 
+.chips{
+    display: flex;
+    justify-content: center;
+    margin-right: 3%;
+}
+
+.chips > img{
+    width: 100px;
+    height: 100px;
+    margin-right: 5%;
+}
+
 @keyframes colorAnimation{
     0%       {background-color: red; color: whitesmoke;}
     10%      {background-color: orange; color: violet;}
