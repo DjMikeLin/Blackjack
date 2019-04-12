@@ -1,5 +1,8 @@
 $(() => {
     let player = new Player(5000);
+    setStack(player, player.stack);
+    setBet(player, player.bet);
+
     let dealer = new Player(0);
     let game = new Game(player, dealer);
 
@@ -11,10 +14,19 @@ $(() => {
     $('#stand').hide();
 
     $('#bet').click(() => {
-        if(player.bet > player.stack){
+        $('#errorMessage').text("");
+        //Edge case checking
+        if(player.bet === 0){
+            $('#errorMessage').text("You need to bet a amount by clicking the chips!");
+            return;
+        }
+        else if(player.bet > player.stack){
             $('#errorMessage').text("You can't bet more then your current stack!");
+            setBet(player, 0);
+            return;
         }
 
+        setStack(player, player.stack - player.bet);
         $('#bet').hide();
         $('.chips').hide();
         $('#deal').show();
@@ -69,12 +81,18 @@ function assignOnClickToChips(chips, player){
         //On player click() increase the player's current bet
         item.click(() => {
             player.bet += chip.value;
-            console.log(player);
+            setBet(player, player.bet);
         });
         $('.chips').append(item);
     });
 }
 //Refreshes page with player's current stack
-function setStack(player){
+function setStack(player, currStack){
+    player.stack = currStack;
     $('.stackSize').text(player.stack);
+}
+//Refreshes page with player's current bet
+function setBet(player, currBet){
+    player.bet = currBet;
+    $('.betSize').text(player.bet);
 }
