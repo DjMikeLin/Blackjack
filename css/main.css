@@ -16,22 +16,6 @@ main{
     background-size: cover;
 }
 
-p{
-    margin-right: 5%;
-    width: 40%;
-    height: 5%;
-    border-radius: 100%;
-    text-align: center;
-    background-color: rgb(118, 125, 135, .5);
-    color: #69429b;
-    animation-duration: 10s;
-    animation-name: colorAnimation;
-    animation-iteration-count: infinite;
-    text-align: center;
-    font-size: 2em;
-    font-weight: bolder;
-}
-
 aside{
     display: flex;
     flex-direction: column;
@@ -46,6 +30,22 @@ button{
 
 .dealerCards .playerCards{
 
+}
+
+.player{
+    margin-right: 5%;
+    width: 40%;
+    height: 5%;
+    border-radius: 100%;
+    text-align: center;
+    background-color: rgb(118, 125, 135, .5);
+    color: #69429b;
+    animation-duration: 10s;
+    animation-name: colorAnimation;
+    animation-iteration-count: infinite;
+    text-align: center;
+    font-size: 2em;
+    font-weight: bolder;
 }
 
 .cards{
@@ -74,7 +74,7 @@ button{
 }
 
 .stackSize{
-    
+
 }
 
 #errorMessage{

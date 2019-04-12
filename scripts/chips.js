@@ -9,7 +9,7 @@ class Chips{
 
         betValues.forEach((element) => {
             arr.push({
-                path: "Images/" + element + "Chip.jpg",
+                path: "Images/" + element + "Chip.png",
                 value: element
             });
         });

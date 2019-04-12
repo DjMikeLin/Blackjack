@@ -16,6 +16,7 @@ $(() => {
         }
 
         $('#bet').hide();
+        $('.chips').hide();
         $('#deal').show();
     });
 
@@ -75,5 +76,5 @@ function assignOnClickToChips(chips, player){
 }
 //Refreshes page with player's current stack
 function setStack(player){
-
+    $('.stackSize').text(player.stack);
 }
