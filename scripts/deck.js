@@ -1,8 +1,8 @@
 class Deck{
     constructor(){
-        this.numCards = 52; 
-        this.cards = this.makeDeck();
-        this.cards = this.shuffle();
+        this.numCards = 52;//current number of cards in the Deck
+        this.cards = this.makeDeck();//current cards in the Deck
+        this.cards = this.shuffle();//shuffles deck on creation
     }
     //Returns a array of objects; Objects have path to image, points regarding to card, and the number cardType
     makeDeck(){

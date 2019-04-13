@@ -14,7 +14,7 @@ $(() => {
     $('#stand').hide();
     $('#nextRound').hide();
     $('.playerInfo').hide();
-
+    //bet onclick
     $('#bet').click(() => {
         $('#errorMessage').text("");
         //Edge case checking
@@ -33,7 +33,7 @@ $(() => {
         $('.chips').hide();
         $('#deal').show();
     });
-
+    //deal onclick 
     $('#deal').click(() => {
         player.assignCards(game.currRound.deck.deal(2));
         dealer.assignCards(game.currRound.deck.deal(2));
@@ -57,7 +57,7 @@ $(() => {
         if(game.currRound.bust(dealer))
             dealer.findAce();
     });
-
+    //on click for hit button for players
     $('#hit').click(() => {
         player.assignCards(game.currRound.deck.deal(1));
 
@@ -76,7 +76,7 @@ $(() => {
             flipCard(dealer);
         }
     });
-
+    //stand on click; goes to next player or dealer
     $('#stand').click(() => {
         $('#hit').hide();
         $('#stand').hide();
@@ -84,9 +84,15 @@ $(() => {
         flipCard(dealer);
         dealerTurn(game);
     });
-
+    //on click for next round button; starts new round
     $('#nextRound').click(() => {
         nextRound(game);
+    });
+    //End game onclick for cash out button
+    $('#cashOut').click(() => {
+        $('button').hide();
+        $('.stackSize').text("0");
+        $('#errorMessage').text("You've cashed out: $" + player.stack);
     });
 });
 //Checks if player have blackjack; If true auto click stand
