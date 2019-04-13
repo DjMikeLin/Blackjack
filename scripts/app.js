@@ -118,12 +118,20 @@ function dealerTurn(game){
         else
             game.dealer.stand = true;
     }
-
+    roundEnd(game);
+}
+//Show the next round button, and checks for draw/loss/win/and empty stack at the end of each round
+function roundEnd(game){
     $('#nextRound').show();
     if(game.currRound.checkScores() === true)
         playerWon(game.player);
-    else if(game.currRound.checkScores() === false)
+    else if(game.currRound.checkScores() === false){
         $('#errorMessage').text("You've Lost!");
+        if(game.player.stack === 0){
+            $('#errorMessage').append(" Game Over");
+            $('#nextRound').hide();
+        }
+    }
     else{
         $('#errorMessage').text("You've Drawed!");
         setStack(game.player, game.player.stack + game.player.bet);
