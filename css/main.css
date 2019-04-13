@@ -72,6 +72,7 @@ p{
 
 .chips > p{
     width: 20%;
+    margin-top: 5%;
     margin-right: 30%;
     white-space: nowrap;
 }
