@@ -2,10 +2,16 @@
 Blackjack game on the web that is hosted on an Ubuntu Web Server. Testing have only been done on Google Chrome, Firefox, and Internet Explorer
 
 ## Technologies and Frameworks Used
-### **Bootstrap**
-### **Ubuntu 18.04.2 LTS Web Server**
-### **JQuery**
-### **Javascript, HTML, CSS**
+#### **Bootstrap**
+#### **Ubuntu 18.04.2 LTS Web Server**
+#### **JQuery**
+#### **Javascript, HTML, CSS**
+
+## Tools Used
+#### ZenHub
+<https://www.zenhub.com/>
+#### ReText
+<https://github.com/retext-project/retext>
 
 ## Prerequisites
 - Most recent versions of Firefox or Google Chrome
