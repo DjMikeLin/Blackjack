@@ -87,7 +87,6 @@ $(() => {
 
     $('#nextRound').click(() => {
         nextRound(game);
-        console.log(game);
     });
 });
 //Checks if player have blackjack; If true auto click stand
