@@ -133,6 +133,14 @@ function dealerTurn(game){
 //Starts a new round in the game
 function nextRound(game){
     game.newRound();
+
+    $('.cards').remove();
+    $('.chips').show();
+    $('.betSize').text("0");
+    $('#errorMessage').text("");
+    $('#bet').show();
+    $('#nextRound').hide();
+    $('.playerInfo').hide();
 }
 //Updates stuff after player has won
 function playerWon(player){
