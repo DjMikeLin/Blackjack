@@ -20,6 +20,10 @@ class Player{
     reset(){
         this.score = 0;
         this.cards = [];
+        this.stand = false;
+        this.blackJack = false;
+        this.bet = 0;
+        this.dealerScore = 0;
         return this;
     }
     //Subtracts amount from amount to stack and updates it

@@ -12,6 +12,6 @@ class Game{
     }
     //Starts a new round
     newRound(){
-        this.currRound = new Round(this.dealer, this.player.reset());
+        this.currRound = new Round(this.dealer.reset(), this.player.reset());
     }
 }

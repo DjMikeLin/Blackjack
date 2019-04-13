@@ -12,6 +12,7 @@ $(() => {
     $('#deal').hide();
     $('#hit').hide();
     $('#stand').hide();
+    $('#nextRound').hide();
     $('.playerInfo').hide();
 
     $('#bet').click(() => {
@@ -39,7 +40,6 @@ $(() => {
         dealer.dealerScore = dealer.score - dealer.cards[0].points;
 
         showCards(player, $('.playerCards'));
-        checkBlackJack(player);
         showPreFlipCards(dealer, $('.dealerCards'));
 
         $('.playerInfo').show();
@@ -49,6 +49,13 @@ $(() => {
 
         setScore(player, $('.playerScore'));
         setDealerScore(dealer);
+        checkBlackJack(player);
+        //Dealer or player will only bust after dealing if both cards are Aces
+        if(game.currRound.bust(player))
+            player.findAce();
+        
+        if(game.currRound.bust(dealer))
+            dealer.findAce();
     });
 
     $('#hit').click(() => {
@@ -65,6 +72,7 @@ $(() => {
             $('#errorMessage').text("Busted!");
             $('#hit').hide();
             $('#stand').hide();
+            $('#nextRound').show();
             flipCard(dealer);
         }
     });
@@ -75,6 +83,11 @@ $(() => {
 
         flipCard(dealer);
         dealerTurn(game);
+    });
+
+    $('#nextRound').click(() => {
+        nextRound(game);
+        console.log(game);
     });
 });
 //Checks if player have blackjack; If true auto click stand
@@ -99,6 +112,7 @@ function dealerTurn(game){
 
             if(game.currRound.bust(game.dealer)){
                 playerWon(game.player);
+                $('#nextRound').show();
                 return;
             }
         }
@@ -106,6 +120,7 @@ function dealerTurn(game){
             game.dealer.stand = true;
     }
 
+    $('#nextRound').show();
     if(game.currRound.checkScores() === true)
         playerWon(game.player);
     else if(game.currRound.checkScores() === false)
@@ -114,6 +129,10 @@ function dealerTurn(game){
         $('#errorMessage').text("You've Drawed!");
         setStack(game.player, game.player.stack + game.player.bet);
     }
+}
+//Starts a new round in the game
+function nextRound(game){
+    game.newRound();
 }
 //Updates stuff after player has won
 function playerWon(player){
