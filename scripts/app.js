@@ -39,6 +39,7 @@ $(() => {
         dealer.dealerScore = dealer.score - dealer.cards[0].points;
 
         showCards(player, $('.playerCards'));
+        checkBlackJack(player);
         showPreFlipCards(dealer, $('.dealerCards'));
 
         $('.playerInfo').show();
@@ -57,6 +58,7 @@ $(() => {
             player.findAce();
 
         appendCard(player, $('.playerCards'), $('.playerCards > .cards'));
+        checkBlackJack(player);
         setScore(player, $('.playerScore'));
         
         if(game.currRound.bust(player)){
@@ -75,6 +77,13 @@ $(() => {
         dealerTurn(game);
     });
 });
+//Checks if player have blackjack; If true auto click stand
+function checkBlackJack(player){
+    if(player.blackJack){
+        player.stand = true;
+        $('#stand').click();
+    }
+}
 //Dealer takes turn
 function dealerTurn(game){
     while(!game.dealer.stand){
@@ -86,6 +95,7 @@ function dealerTurn(game){
             
             appendCard(game.dealer, $('.dealerCards'), $('.dealerCards > .cards'));
             setScore(game.dealer, $('.dealerScore'));
+            checkBlackJack(game.dealer);
 
             if(game.currRound.bust(game.dealer)){
                 playerWon(game.player);
