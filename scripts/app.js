@@ -72,8 +72,12 @@ $(() => {
             $('#errorMessage').text("Busted!");
             $('#hit').hide();
             $('#stand').hide();
-            $('#nextRound').show();
             flipCard(dealer);
+
+            if(gameOver(game))
+                return;
+
+            $('#nextRound').show();
         }
     });
     //stand on click; goes to next player or dealer
@@ -133,15 +137,23 @@ function roundEnd(game){
         playerWon(game.player);
     else if(game.currRound.checkScores() === false){
         $('#errorMessage').text("You've Lost!");
-        if(game.player.stack === 0){
-            $('#errorMessage').append(" Game Over");
-            $('#nextRound').hide();
-        }
+        gameOver(game);
     }
     else{
         $('#errorMessage').text("You've Drawed!");
         setStack(game.player, game.player.stack + game.player.bet);
     }
+}
+//Hides buttons if player's stack in the game is 0; Returns true if game ended, otherwise return false
+function gameOver(game){
+    if(game.player.stack === 0){
+        $('#errorMessage').append(" Game Over");
+        $('#nextRound').hide();
+        $('#cashOut').hide();
+        $('#bet').hide();
+        return true;
+    }
+    return false;
 }
 //Starts a new round in the game
 function nextRound(game){
